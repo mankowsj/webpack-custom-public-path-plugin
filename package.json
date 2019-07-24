@@ -1,0 +1,27 @@
+{
+  "name": "webpack-custom-public-path-plugin",
+  "version": "1.0.0",
+  "description": "plugin to manage webpack publicPath option",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mankowsj/webpack-custom-public-path-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "publicPath"
+  ],
+  "author": "mankowsj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mankowsj/webpack-custom-public-path-plugin/issues"
+  },
+  "homepage": "https://github.com/mankowsj/webpack-custom-public-path-plugin#readme",
+  "peerDependency": {
+    "webpack": "4.x"
+  }
+}
