@@ -13,4 +13,9 @@ config.plugins = [
 ];
 ```
 
-
+```javascript
+config.plugins = [
+  new CustomPublicPath({
+    cssPublicPath: 'cusotm/path'
+];
+```
