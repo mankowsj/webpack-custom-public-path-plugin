@@ -10,6 +10,7 @@ config.plugins = [
     cssPublicPath: function doPath(href) {
       return 'custom/path/to/lazy/css';
     }
+  })
 ];
 ```
 
@@ -17,5 +18,6 @@ config.plugins = [
 config.plugins = [
   new CustomPublicPath({
     cssPublicPath: 'cusotm/path'
+  })
 ];
 ```
