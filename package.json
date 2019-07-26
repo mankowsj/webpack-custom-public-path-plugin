@@ -1,6 +1,6 @@
 {
   "name": "webpack-custom-public-path-plugin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "plugin to manage webpack publicPath option",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/mankowsj/webpack-custom-public-path-plugin#readme",
   "peerDependency": {
-    "webpack": "4.x"
+    "webpack": "4.x",
+    "mini-css-extract-plugin": ">= 0.8.0 < 1"
   }
 }

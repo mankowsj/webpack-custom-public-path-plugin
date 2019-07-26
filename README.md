@@ -8,7 +8,7 @@ This plugin is supposed to solve the problematic thing which is inability to cha
 config.plugins = [
   new CustomPublicPath({
     cssPublicPath: function doPath(href) {
-      return 'custom/path/to/lazy/css';
+      return 'custom/path/to/lazy/css/';
     }
   })
 ];
@@ -17,7 +17,7 @@ config.plugins = [
 ```javascript
 config.plugins = [
   new CustomPublicPath({
-    cssPublicPath: 'cusotm/path'
+    cssPublicPath: 'custom/path/'
   })
 ];
 ```
