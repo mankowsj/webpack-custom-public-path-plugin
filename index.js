@@ -4,24 +4,7 @@
  */
 
 class WebpackCustomPublicPathPlugin {
-  constructor(options) {
-    this.options = options || {};
-
-    this.hookName = 'require-extensions';
-    this.paramName = 'href';
-    this.pluginName = 'WebpackCustomCssPublicPathPlugin';
-  }
-
-  getPublicPathReplacement(path, pathType) {
-    switch (pathType) {
-      case 'function':
-        return `${path.name}(${this.paramName})`;
-      default:
-        return `${path} + ${this.paramName}`;
-    }
-  }
-
-  getPublicPathFunction(path, pathType) {
+  static getPublicPathFunction(path, pathType) {
     switch (pathType) {
       case 'function':
         return path.toString();
@@ -30,13 +13,33 @@ class WebpackCustomPublicPathPlugin {
     }
   }
 
+  constructor(options) {
+    this.options = options || {};
+
+    this.hookName = 'require-extensions';
+    this.paramName = 'href';
+    this.pluginName = 'WebpackCustomCssPublicPathPlugin';
+
+    this.webpackRequireName = '__webpack_require__';
+    this.publicPathName = 'p';
+  }
+
+  getPublicPathReplacement(path, pathType) {
+    switch (pathType) {
+      case 'function':
+        return `${path.name}(${this.paramName}, ${this.webpackRequireName}.${this.publicPathName})`;
+      default:
+        return `'${path}' + ${this.paramName}`;
+    }
+  }
+
   applyCustomPublicPath(path, source) {
     const result = [];
     const pathType = typeof path;
-    const regexp = /__webpack_require__\.p(\s|)\+(\s|)href/;
+    const regexp = new RegExp(`${this.webpackRequireName}\\.${this.publicPathName}(\\s|)\\+(\\s|)${this.paramName}`);
 
     if (regexp.test(source)) {
-      result.push(this.getPublicPathFunction(path, pathType));
+      result.push(WebpackCustomPublicPathPlugin.getPublicPathFunction(path, pathType));
       result.push(
         source.replace(regexp, this.getPublicPathReplacement(path, pathType))
       );
